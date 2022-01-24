@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-xs-12">
+    <p>Game Control - Status [{{started ? 'Started': 'Stopped'}}]</p>
+    <button class="btn btn-primary" (click)="onStartGame()" [disabled]="started">Start Game</button>
+    <button class="btn btn-danger" (click)="onStopGame()" [disabled]="!started">Stop Game</button>
+    <button class="btn btn-success" (click)="onGameClean()">Clean Game</button>
+  </div>
+</div>

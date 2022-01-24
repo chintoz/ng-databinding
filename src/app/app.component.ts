@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   serverElements = []
+  games = []
+  displayGameAssignment: boolean = true
 
-  onServerAdded(serverData: {serverName: string, serverContent: string}) {
+  onServerAdded(serverData: { serverName: string, serverContent: string }) {
     this.serverElements.push({
       type: 'server',
       name: serverData.serverName,
@@ -16,12 +18,20 @@ export class AppComponent {
     })
   }
 
-  onBlueprintAdded(blueprintData: {serverName: string, serverContent: string}) {
+  onBlueprintAdded(blueprintData: { serverName: string, serverContent: string }) {
     this.serverElements.push({
       type: 'blueprint',
       name: blueprintData.serverName,
       content: blueprintData.serverContent
     })
+  }
+
+  onGameAdded(gameData: { value: number }) {
+    this.games.push(gameData)
+  }
+
+  onGameCleaned() {
+    this.games = []
   }
 
   onChangeFirst(): void {

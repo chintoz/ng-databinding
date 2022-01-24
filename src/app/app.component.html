@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!displayGameAssignment">
   <app-cockpit (serverCreated)="onServerAdded($event)" (bpCreated)="onBlueprintAdded($event)"></app-cockpit>
   <hr>
   <div class="row">
@@ -15,3 +15,17 @@
     </div>
   </div>
 </div>
+
+<div class="container" *ngIf="displayGameAssignment">
+  <h1>Game assignment</h1>
+  <app-game-control (gameCreated)="onGameAdded($event)" (gameCleaned)="onGameCleaned()"></app-game-control>
+  <br>
+  <div class="row" *ngFor="let game of games">
+    <app-even *ngIf="game.value % 2 === 0" [value]="game.value"></app-even>
+    <app-odd *ngIf="game.value % 2 !== 0" [value]="game.value"></app-odd>
+  </div>
+</div>
+
+
+
+
